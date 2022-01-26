@@ -1,20 +1,28 @@
+using System;
 using System.Collections.Generic;
 using CommandLine;
+using Microsoft.Extensions.Configuration;
+
 //https://github.com/commandlineparser/commandline#command-line-parser-library-for-clr-and-netstandard
 
-namespace VarbyteCli
+namespace BotCli
 {
-    //Specifies all the properties and input arguments used in Program.cs
-    [Verb("create-key", HelpText = "Creates the encryption key in the temp folder")]
-    class CreateKeyOptions
+    //You allways need a verb!
+    [Verb("talk", HelpText = "Makes the bot say something")]
+    class TalkOptions
     {
+        [Option('r', "repeat", Required = false, HelpText = "Repeats the input.")]
         public IEnumerable<string> Args { get; set; }
+
+        public static int Run(TalkOptions opts, IConfigurationRoot config)
+        {
+            var message = opts.Args == null ? config["BotName"] + ": Hello World!" 
+                : $"{config["BotName"]} repeats: {String.Join(' ', opts.Args)}";
+            Console.WriteLine(message);
+            return 0;
+        }
     }
-    [Verb("remove-key", HelpText = "Removes the encryption key from the temp folder.")]
-    class RemoveKeyOptions
-    {
-        public IEnumerable<string> Args { get; set; }
-    }
+
     [Verb("list", HelpText = "Lists encryptions in the default folder.")]
     class ListOptions
     {
@@ -45,7 +53,7 @@ namespace VarbyteCli
     {
         [Option('c', "to clipboard", HelpText = "Decrypts and copies to the clipboard")]
         public IEnumerable<string> ClipArgs { get; set; }
-        [Option('f', "to file",  HelpText = "Output uri for decrypted file.")]
+        [Option('f', "to file", HelpText = "Output uri for decrypted file.")]
         public string FilePath { get; set; }
         [Option('s', "standard out", HelpText = "Prints output to std out")]
         public IEnumerable<string> StdArgs { get; set; }

@@ -1,9 +1,9 @@
-# Encryption Decryption dotnet-tool
+# Dotnet-tool-template
 
-This project is driven by a need to handle API-keys and connection strings securely.
+This project is a framework/template for building dotnet-tools.
 
 ## Based on/inspired by/dependencies
 
-- [Varbyte - an advanced encryption app by Albin Alm](https://github.com/albinalm/varbyte)
 - [CommandLineParser - a lovely Nuget package to parse the standard in](https://github.com/commandlineparser/commandline)
+- [CommandLineParser WIKI](https://github.com/commandlineparser/commandline/wiki)
 - [TextCopy - a cross platform tool to maximize the clipboard](https://github.com/CopyText/TextCopy)

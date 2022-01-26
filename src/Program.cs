@@ -1,31 +1,26 @@
 ﻿using System;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 using CommandLine;
-using System.Linq;
 
-namespace VarbyteCli
+namespace BotCli
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            //Loads all variables from multiple sources, overrides if reoccurrence.
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .AddUserSecrets<Program>() //User secrets commands our found in README.md
-                .AddEnvironmentVariables()
-                .Build();
-
-            CommandLine.Parser.Default.ParseArguments
-                <MakeOptions,
-                ListOptions,
-                DecryptOptions,
-                DeleteOptions,
-                CreateKeyOptions,
-                PathOptions>(args);
+            var app = ConsoleApp.Build(args);
+            var config = app.Config;
+            
+            var parserResult =
+            (new Parser()).ParseArguments
+            <TalkOptions>(args);
+                
+            var output = parserResult.MapResult(
+            opts => TalkOptions.Run(opts, config),
+            errs => 1);
 
             Console.WriteLine("End of program");
+            return output;
         }
+
     }
 }
