@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <OutputType>Exe</OutputType>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>varbyte</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <UserSecretsId>137e327a-c68a-45f0-afd2-60e52afb4a7c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TextCopy" Version="6.0.0" />
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
