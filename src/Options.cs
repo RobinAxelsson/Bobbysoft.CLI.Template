@@ -7,37 +7,6 @@ using Microsoft.Extensions.Configuration;
 
 namespace BotCli
 {
-    //You allways need a verb!
-    public interface IOptions{
-        public int Try(IConfigurationRoot config);
-    }
-    [Verb("talk", HelpText = "Makes the bot say something")]
-    public class TalkOptions : IOptions
-    {
-        [Option('r', "repeat", Required = false, HelpText = "Repeats the input.")]
-        public IEnumerable<string> Args { get; set; }
-
-        public int Try(IConfigurationRoot config)
-        {
-            var message = this.Args == null ? config["BotName"] + ": Hello World!" 
-                : $"{config["BotName"]} repeats: {String.Join(' ', this.Args)}";
-            Console.WriteLine(message);
-            return 0;
-        }
-    }
-
-    [Verb("list", HelpText = "Lists encryptions in the default folder.")]
-    class ListOptions : IOptions
-    {
-        [Option('r', "repeat", Required = false, HelpText = "Repeats the input.")]
-        public IEnumerable<string> Args { get; set; }
-
-        public int Try(IConfigurationRoot config)
-        {
-            Console.WriteLine("this is a list");
-            return 0;
-        }
-    }
     [Verb("path", HelpText = "Handles encryptions path.")]
     class PathOptions
     {

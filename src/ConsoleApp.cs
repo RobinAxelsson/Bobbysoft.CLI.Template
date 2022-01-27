@@ -1,4 +1,6 @@
-﻿using CommandLine;
+﻿using System.Linq;
+using BotCli.actions;
+using CommandLine;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,15 +23,17 @@ namespace BotCli
                 .Build();
                     
             serviceCollection.AddSingleton<IConfigurationRoot>(config);
-            serviceCollection.AddSingleton<Parser>();
-            serviceCollection.AddSingleton<Runner>();
+            serviceCollection.AddScoped<Parser>();
+            serviceCollection.AddSingleton<IAction, TalkAction>();
+            serviceCollection.AddSingleton<IAction, ListAction>();
 
             var provider = serviceCollection.BuildServiceProvider();
 
             return new ConsoleApp(provider);
         }
         public void Run(){
-            _provider.GetService<Runner>().ExecuteProgram();
+            var actions = _provider.GetServices<IAction>();
+            actions.ToList().ForEach(action => action.Act());
         }
     }
 }
