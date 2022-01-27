@@ -5,22 +5,12 @@ namespace BotCli
 {
     class Program
     {
-        static int Main(string[] args)
+        static void Main()
         {
-            var app = ConsoleApp.Build(args);
-            var config = app.Config;
-            
-            var parserResult =
-            (new Parser()).ParseArguments
-            <TalkOptions>(args);
-                
-            var output = parserResult.MapResult(
-            opts => TalkOptions.Run(opts, config),
-            errs => 1);
-
+            ConsoleApp
+            .Build()
+            .Run();
             Console.WriteLine("End of program");
-            return output;
         }
-
     }
 }

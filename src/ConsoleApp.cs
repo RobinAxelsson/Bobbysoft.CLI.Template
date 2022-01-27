@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CommandLine;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BotCli
@@ -6,14 +7,11 @@ namespace BotCli
     public class ConsoleApp
     {
         private ServiceProvider _provider;
-        public IConfigurationRoot Config { get; private set; }
-        public T GetService<T>() => _provider.GetService<T>();
         private ConsoleApp(ServiceProvider provider)
         {
             _provider = provider;
-            Config = _provider.GetService<IConfigurationRoot>();
         }
-        public static ConsoleApp Build(string[] args)
+        public static ConsoleApp Build()
         {
             var serviceCollection = new ServiceCollection();
             var config = new ConfigurationBuilder()
@@ -23,10 +21,15 @@ namespace BotCli
                 .Build();
                     
             serviceCollection.AddSingleton<IConfigurationRoot>(config);
-            // serviceCollection.AddSingleton<IConfigurationRoot>(config);
+            serviceCollection.AddSingleton<Parser>();
+            serviceCollection.AddSingleton<Runner>();
 
             var provider = serviceCollection.BuildServiceProvider();
+
             return new ConsoleApp(provider);
+        }
+        public void Run(){
+            _provider.GetService<Runner>().ExecuteProgram();
         }
     }
 }
