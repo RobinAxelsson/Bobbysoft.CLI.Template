@@ -16,14 +16,14 @@ namespace BotCli
         public static ConsoleApp Build()
         {
             var serviceCollection = new ServiceCollection();
+            
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddUserSecrets<Program>() //User secrets commands our found in README.md
+                .AddUserSecrets<Program>()
                 .AddEnvironmentVariables()
                 .Build();
                     
             serviceCollection.AddSingleton<IConfigurationRoot>(config);
-            serviceCollection.AddScoped<Parser>();
             serviceCollection.AddSingleton<IAction, TalkAction>();
             serviceCollection.AddSingleton<IAction, ListAction>();
 
@@ -31,9 +31,14 @@ namespace BotCli
 
             return new ConsoleApp(provider);
         }
-        public void Run(){
+        public void Run(string[] args)
+        {
+            //Add all the options here
+            var parserResult = Parser.Default.ParseArguments<TalkOptions, ListOptions>(args);
+            
+            //Gets registered actions and runs all the handles and passes the result to the next (like a middleware)
             var actions = _provider.GetServices<IAction>();
-            actions.ToList().ForEach(action => action.Act());
+            actions.ToList().Aggregate(parserResult, (result, action) => action.Handle(result));
         }
     }
 }

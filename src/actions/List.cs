@@ -4,29 +4,23 @@ using CommandLine;
 
 namespace BotCli.actions
 {
-    [Verb("list", HelpText = "Lists encryptions in the default folder.")]
+    [Verb("list", HelpText = "Lists something.")]
     public class ListOptions
     {
-        [Option('r', "repeat", Required = false, HelpText = "Repeats the input.")]
+        [Option('g', "go", Required = false, HelpText = "Repeats the input.")]
         public IEnumerable<string> Args { get; set; }
     }
     public class ListAction : IAction
     {
-        private readonly Parser _parser;
+        public ParserResult<object> Handle(ParserResult<object> parserResult){
 
-        public ListAction(Parser parser)
-        {
-            _parser = parser;
-        }
-        public int Act(){
-            var parserResult = _parser.ParseArguments
-                <ListOptions, TalkOptions>(Environment.GetCommandLineArgs());
-
-            parserResult.WithParsed<ListOptions>(opt =>
+            parserResult
+            .WithParsed<ListOptions>(opt =>
             {
-                Console.WriteLine("List: Test monley movie star");
+                var message = "list: ho ho ho";
+                Console.WriteLine(message);
             });
-            return 0;
+            return parserResult;
         }
     }
 

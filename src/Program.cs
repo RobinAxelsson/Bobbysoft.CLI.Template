@@ -5,11 +5,11 @@ namespace BotCli
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             ConsoleApp
             .Build()
-            .Run();
+            .Run(args);
             Console.WriteLine("End of program");
         }
     }

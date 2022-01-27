@@ -7,7 +7,7 @@ namespace BotCli.actions
 {
     public interface IAction
     {
-        int Act();
+        ParserResult<object> Handle(ParserResult<object> parserResult);
     }
 
     [Verb("talk", HelpText = "Makes the bot say something")]
@@ -20,25 +20,20 @@ namespace BotCli.actions
     public class TalkAction : IAction
     {
         private readonly IConfigurationRoot _configuration;
-        private readonly Parser _parser;
-
-        public TalkAction(IConfigurationRoot configuration, Parser parser)
+        public TalkAction(IConfigurationRoot configuration)
         {
             _configuration = configuration;
-            _parser = parser;
         }
-        public int Act()
+        public ParserResult<object> Handle(ParserResult<object> parserResult)
         {
-            var parserResult = _parser.ParseArguments
-                <TalkOptions, ListOptions>(Environment.GetCommandLineArgs());
-
             parserResult.WithParsed<TalkOptions>(opt =>
             {
                 var message = opt.Args == null ? _configuration["BotName"] + ": Hello World!"
                 : $"{_configuration["BotName"]} repeats: {String.Join(' ', opt.Args)}";
                 Console.WriteLine(message);
             });
-            return 0;
+            
+            return parserResult;
         }
     }
 }
