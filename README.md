@@ -1,6 +1,6 @@
 # Dotnet-tool-template
 
-This project is a framework/template for building dotnet-tools.
+This project is a framework/template for building CommandLine tools, dotnet-tools in particular.
 
 ## Based on/inspired by/dependencies
 

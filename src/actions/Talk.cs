@@ -31,7 +31,7 @@ namespace BotCli.actions
                 var botname = _configuration["BotName"];
                 var pipedText = Utils.CheckPipe();
                 var message = pipedText != null  ? "I'm piping: " + pipedText :
-                opt.Args == null ? 
+                ((string[])opt.Args).Length == 0 ? 
                 botname + ": Hello World!"
                 : $"{botname}: {String.Join(' ', opt.Args)}";
                 Console.WriteLine(message);

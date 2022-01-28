@@ -40,17 +40,17 @@ function Test($title, $command, $expectedOutput, $test){
 Running Commands"
 
 
-	Test "Running talk repeat" ".\$path\BotCli.exe talk -r I repeat everything!" "Bob: I repeat everything!" $true
-	Test "Running Clip" ".\$path\BotCli.exe clip" "N/A" $false
-	Test "Running Clip input" ".\$path\BotCli.exe clip --input This is copied to clipoard" "N/A" $false
-	Test "Running talk pipe" "Write-Output This is piped | .\$path\BotCli.exe talk" "N/A" $false
-	Test "Running where" ".\$path\BotCli.exe where" "C:\Users\axels\MS-Code\dotnet-tool-template\x__release" $true
-	Test "Running where userprofile" ".\$path\BotCli.exe where --name userprofile" "N/A" $false
-	Test "Running where temp" ".\$path\BotCli.exe where --name temp" "N/A" $false
-	Test "Running where temp" ".\$path\BotCli.exe where --name system" "N/A" $false
-	Test "Running where temp" ".\$path\BotCli.exe where --name programfiles" "N/A" $false
-	Test "Running where temp" ".\$path\BotCli.exe where --name desktop" "N/A" $false
-	Test "Running where temp" ".\$path\BotCli.exe where --name randomstring" "N/A" $false
+	Test "Running talk repeat" ".\$path\TestTool.exe talk -r I repeat everything!" "Bob: I repeat everything!" $true
+	Test "Running Clip" ".\$path\TestTool.exe clip" "N/A" $false
+	Test "Running Clip input" ".\$path\TestTool.exe clip --input This is copied to clipoard" "N/A" $false
+	Test "Running talk pipe" "Write-Output This is piped | .\$path\TestTool.exe talk" "N/A" $false
+	Test "Running where" ".\$path\TestTool.exe where" "C:\Users\axels\MS-Code\dotnet-tool-template\x__release" $true
+	Test "Running where userprofile" ".\$path\TestTool.exe where --name userprofile" "N/A" $false
+	Test "Running where temp" ".\$path\TestTool.exe where --name temp" "N/A" $false
+	Test "Running where temp" ".\$path\TestTool.exe where --name system" "N/A" $false
+	Test "Running where temp" ".\$path\TestTool.exe where --name programfiles" "N/A" $false
+	Test "Running where temp" ".\$path\TestTool.exe where --name desktop" "N/A" $false
+	Test "Running where temp" ".\$path\TestTool.exe where --name randomstring" "N/A" $false
 
 	Write-Output "------------Cleaning up-------------"
 	rm-rf $path

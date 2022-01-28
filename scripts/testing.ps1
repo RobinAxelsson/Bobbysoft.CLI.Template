@@ -9,7 +9,7 @@ Write-Output "
 
 Running Commands"
 
-Write-Output "This is Piped" | .\x__release\BotCli.exe talk
+Write-Output "This is Piped" | .\x__release\TestTool.exe talk
 
 Write-Output "------------Cleaning up-------------"
 rm-rf $path

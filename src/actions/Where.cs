@@ -5,7 +5,7 @@ using CommandLine;
 
 namespace BotCli.actions
 {
-    [Verb("where", HelpText = "Gets path to executable.")]
+    [Verb("where", HelpText = "Gets path to executable and more.")]
     public class WhereOptions
     {
         [Option('n', "name", Required = false, HelpText = "Finds the enumerated folder paths by name.")]
@@ -40,7 +40,4 @@ namespace BotCli.actions
         _ => "Not found",
         };
     }
-    
-    
-
 }

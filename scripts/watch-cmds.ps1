@@ -42,9 +42,9 @@ watch | Get-Item | Where-Object { $_.Extension -eq ".cs" } | % {
 Running Commands"
 
 
-	Test "Running talk repeat" ".\$path\BotCli.exe talk -r I repeat everything!" "Bob: I repeat everything!" $true
-	Test "Running where" ".\$path\BotCli.exe where" "C:\Users\axels\MS-Code\dotnet-tool-template\src\ReleaseBuild" $true
-	Test "Running where" ".\$path\BotCli.exe clip" "C:\Users\axels\MS-Code\dotnet-tool-template\src\ReleaseBuild" $false
+	Test "Running talk repeat" ".\$path\TestTool.exe talk -r I repeat everything!" "Bob: I repeat everything!" $true
+	Test "Running where" ".\$path\TestTool.exe where" "C:\Users\axels\MS-Code\dotnet-tool-template\src\ReleaseBuild" $true
+	Test "Running where" ".\$path\TestTool.exe clip" "C:\Users\axels\MS-Code\dotnet-tool-template\src\ReleaseBuild" $false
 
 	Write-Output "------------Cleaning up-------------"
 	rm-rf $path

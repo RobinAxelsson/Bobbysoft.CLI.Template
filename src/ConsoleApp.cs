@@ -38,8 +38,10 @@ namespace BotCli
             //Add all the options here
             var parserResult = Parser.Default.ParseArguments<TalkOptions, WhereOptions, ClipOptions>(args);
             
-            //Gets registered actions and runs all the handles and passes the result to the next (like a middleware)
+            //Gets registered actions
             var actions = _provider.GetServices<IAction>();
+
+            //Runs all the actions in sequence
             actions.ToList().Aggregate(parserResult, (result, action) => action.Handle(result));
         }
     }

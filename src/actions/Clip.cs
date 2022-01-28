@@ -18,7 +18,7 @@ namespace BotCli.actions
             parserResult
             .WithParsed<ClipOptions>(opt =>
             {
-                if(opt.Args == null){
+                if(((string[])opt.Args).Length == 0){
                     var message = ClipboardService.GetText();
                     Console.WriteLine(message);
                 }

@@ -4,7 +4,7 @@
       <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>dotnet-bot</ToolCommandName>
+    <ToolCommandName>test-tool</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <UserSecretsId>137e327a-c68a-45f0-afd2-60e52afb4a7c</UserSecretsId>
   </PropertyGroup>

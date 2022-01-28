@@ -7,8 +7,8 @@ namespace BotCli
     public partial class Utils
     {
         public static string Menu(string[] options){
-
             Console.Clear();
+            Console.CursorVisible = false;
 
             var oPts = options.Aggregate( new List<OptionPoint>(), (oPts, opt) => {
                 Console.Write(opt);
@@ -21,14 +21,14 @@ namespace BotCli
             void Draw(OptionPoint opt){
                 if(opt.IsDrawn) return;
                 Console.SetCursorPosition(opt.Left, opt.Top);
-                Console.Write('$');
+                Console.Write("🚀");
                 opt.IsDrawn = true;
             };
 
             void Erase(OptionPoint opt){
                 if(opt.IsDrawn == false) return;
                 Console.SetCursorPosition(opt.Left, opt.Top);
-                Console.Write(' ');
+                Console.Write("  ");
                 opt.IsDrawn = false;
             }
 
@@ -56,6 +56,8 @@ namespace BotCli
             }
             Console.SetCursorPosition(0, oPts[^1].Top + 1);
             Console.WriteLine();
+
+            Console.CursorVisible = true;
             return oPts[selIndex].Option;
         }
         private class OptionPoint
