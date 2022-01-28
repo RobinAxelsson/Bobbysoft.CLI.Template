@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BotCli.actions;
 using CommandLine;
 using Microsoft.Extensions.Configuration;
@@ -22,11 +23,11 @@ namespace BotCli
                 .AddUserSecrets<Program>()
                 .AddEnvironmentVariables()
                 .Build();
-                    
+
             serviceCollection.AddSingleton<IConfigurationRoot>(config);
             serviceCollection.AddSingleton<IAction, TalkAction>();
-            serviceCollection.AddSingleton<IAction, ListAction>();
             serviceCollection.AddSingleton<IAction, WhereAction>();
+            serviceCollection.AddSingleton<IAction, ClipAction>();
 
             var provider = serviceCollection.BuildServiceProvider();
 
@@ -35,7 +36,7 @@ namespace BotCli
         public void Run(string[] args)
         {
             //Add all the options here
-            var parserResult = Parser.Default.ParseArguments<TalkOptions, ListOptions, WhereOptions>(args);
+            var parserResult = Parser.Default.ParseArguments<TalkOptions, WhereOptions, ClipOptions>(args);
             
             //Gets registered actions and runs all the handles and passes the result to the next (like a middleware)
             var actions = _provider.GetServices<IAction>();

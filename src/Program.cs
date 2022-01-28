@@ -1,7 +1,4 @@
-﻿using System;
-using CommandLine;
-
-namespace BotCli
+﻿namespace BotCli
 {
     class Program
     {

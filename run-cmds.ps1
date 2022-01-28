@@ -30,8 +30,6 @@ function Test($title, $command, $expectedOutput, $test){
 	}
 }
 
-watch | Get-Item | Where-Object { $_.Extension -eq ".cs" } | % {
-
 	Write-Output "---------Building Release------------"
 
 	cd src && dotnet build --configuration Release -o ..\$path
@@ -43,8 +41,16 @@ Running Commands"
 
 
 	Test "Running talk repeat" ".\$path\BotCli.exe talk -r I repeat everything!" "Bob: I repeat everything!" $true
-	Test "Running where" ".\$path\BotCli.exe where" "C:\Users\axels\MS-Code\dotnet-tool-template\src\ReleaseBuild" $true
-	Test "Running where" ".\$path\BotCli.exe clip" "C:\Users\axels\MS-Code\dotnet-tool-template\src\ReleaseBuild" $false
+	Test "Running Clip" ".\$path\BotCli.exe clip" "N/A" $false
+	Test "Running Clip input" ".\$path\BotCli.exe clip --input This is copied to clipoard" "N/A" $false
+	Test "Running talk pipe" "Write-Output This is piped | .\$path\BotCli.exe talk" "N/A" $false
+	Test "Running where" ".\$path\BotCli.exe where" "C:\Users\axels\MS-Code\dotnet-tool-template\x__release" $true
+	Test "Running where userprofile" ".\$path\BotCli.exe where --name userprofile" "N/A" $false
+	Test "Running where temp" ".\$path\BotCli.exe where --name temp" "N/A" $false
+	Test "Running where temp" ".\$path\BotCli.exe where --name system" "N/A" $false
+	Test "Running where temp" ".\$path\BotCli.exe where --name programfiles" "N/A" $false
+	Test "Running where temp" ".\$path\BotCli.exe where --name desktop" "N/A" $false
+	Test "Running where temp" ".\$path\BotCli.exe where --name randomstring" "N/A" $false
 
 	Write-Output "------------Cleaning up-------------"
 	rm-rf $path
@@ -52,4 +58,3 @@ Running Commands"
 Skipped: $Skipped
 Total: $Total
 "
-}

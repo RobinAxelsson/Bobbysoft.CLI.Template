@@ -28,8 +28,12 @@ namespace BotCli.actions
         {
             parserResult.WithParsed<TalkOptions>(opt =>
             {
-                var message = opt.Args == null ? _configuration["BotName"] + ": Hello World!"
-                : $"{_configuration["BotName"]}: {String.Join(' ', opt.Args)}";
+                var botname = _configuration["BotName"];
+                var pipedText = Utils.CheckPipe();
+                var message = pipedText != null  ? "I'm piping: " + pipedText :
+                opt.Args == null ? 
+                botname + ": Hello World!"
+                : $"{botname}: {String.Join(' ', opt.Args)}";
                 Console.WriteLine(message);
             });
             

@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/bin/Debug/net5.0/BotCli.dll",
-            "args": ["talk", "all", "I", "say"],
+            "args": ["talk"],
             "cwd": "${workspaceFolder}/src",
             "console": "internalConsole",
             "stopAtEntry": false

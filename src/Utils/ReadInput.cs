@@ -1,18 +1,17 @@
 using System;
-using System.Collections.Generic;
 
 namespace BotCli
 {
-    public class Utils
+    public partial class Utils
     {
         public static string ReadInput(int maxlength, bool hideText = true)
         {
             var inputString = string.Empty;
             var keyInfo = Console.ReadKey(true);
 
-            //exit keys
             while (keyInfo.Key != ConsoleKey.Enter)
             {
+                //exit keys
                 if(keyInfo.Key == ConsoleKey.Enter){
                     break;
                 }
