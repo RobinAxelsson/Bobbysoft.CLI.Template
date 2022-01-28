@@ -10,7 +10,6 @@ namespace BotCli
             ConsoleApp
             .Build()
             .Run(args);
-            Console.WriteLine("End of program");
         }
     }
 }

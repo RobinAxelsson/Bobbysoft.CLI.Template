@@ -29,7 +29,7 @@ namespace BotCli.actions
             parserResult.WithParsed<TalkOptions>(opt =>
             {
                 var message = opt.Args == null ? _configuration["BotName"] + ": Hello World!"
-                : $"{_configuration["BotName"]} repeats: {String.Join(' ', opt.Args)}";
+                : $"{_configuration["BotName"]}: {String.Join(' ', opt.Args)}";
                 Console.WriteLine(message);
             });
             
