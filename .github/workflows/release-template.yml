@@ -16,15 +16,23 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Show Directory
+      run: ./build/ShowDir.ps1
+      shell: pwsh
+
     - name: Setup NuGet CLI
       uses: nuget/setup-nuget@v2
 
+    - name: Show Directory
+      run: ./build/ShowDir.ps1
+      shell: pwsh
+    
     - name: Pack
       run:  ./build/push.ps1
       shell: pwsh
 
-    - name: Debug Pack
-      run: ./build/Debug.ps1
+    - name: Show Directory
+      run: ./build/ShowDir.ps1
       shell: pwsh
 
     - name: Push to NuGet
