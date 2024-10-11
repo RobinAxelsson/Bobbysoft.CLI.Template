@@ -3,7 +3,7 @@
   <metadata>
 
     <id>Bobbysoft.Cli.Template</id>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <title>Bobbysoft.CLI.Template</title>
     <authors>RobinAxelsson</authors>
     <description>Cli tools</description>
@@ -27,7 +27,7 @@
   </metadata>
 
   <files>
-    <file src=".\**\*" target=".\content" />
+    <file src="..\src\**\**\**\*" exclude=".template.config\*"/>
     <file src="..\package-icon.png" />
     <file src="..\README.md" />
   </files>
