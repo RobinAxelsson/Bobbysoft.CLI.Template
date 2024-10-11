@@ -1,0 +1,28 @@
+name: Release
+
+on: push
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: windows-latest
+    if: contains(github.event.head_commit.message, 'release')
+
+    strategy:
+      fail-fast: false
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Pack
+      run: ./build/Pack.ps1
+      shell: pwsh
+
+    - name: Push to NuGet
+      env:
+        NUGET_URL: https://api.nuget.org/v3/index.json
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: ./build/Push.ps1
+      shell: pwsh
