@@ -1,6 +1,12 @@
 # Bobbysoft.CLI.template
 
-This project is a framework/template for building CommandLine tools, dotnet-tools in particular.
+This project is a framework/template for building CommandLine tools
+
+## Usage
+
+```
+dotnet new install bscli
+```
 
 ## Based on/inspired by/dependencies
 
