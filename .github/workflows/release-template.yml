@@ -16,8 +16,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Setup NuGet CLI
+      uses: nuget/setup-nuget@v2
+
     - name: Pack
-      run: ./build/Pack.ps1
+      run:  ./build/push.ps1
       shell: pwsh
 
     - name: Push to NuGet

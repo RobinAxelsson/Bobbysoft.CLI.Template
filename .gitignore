@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+# no need in a template repo
+*.sln
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
