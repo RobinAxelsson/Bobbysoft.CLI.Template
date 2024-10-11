@@ -1,4 +1,4 @@
-﻿namespace BotCli
+﻿namespace $projectName$
 {
     class Program
     {

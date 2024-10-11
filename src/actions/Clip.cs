@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CommandLine;
 using TextCopy;
 
-namespace BotCli.actions
+namespace $projectName$.Actions
 {
     [Verb("clip", HelpText = "Lists something.")]
     public class ClipOptions

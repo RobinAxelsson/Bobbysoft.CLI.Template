@@ -5,7 +5,7 @@ using CommandLine;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BotCli
+namespace $projectName$
 {
     public class ConsoleApp
     {

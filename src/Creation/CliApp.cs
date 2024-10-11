@@ -1,6 +1,6 @@
-﻿using SwDb.CLI.ActionDefintions;
+﻿using $projectName$.ActionDefintions;
 
-namespace SwDb.CLI.Creation
+namespace $projectName$.Creation
 {
     internal class CliApp : ICliApp
     {

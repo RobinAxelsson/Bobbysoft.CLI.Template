@@ -1,4 +1,4 @@
-namespace SwDb.CLI.Utils;
+namespace $projectName$.Utils;
 
 public static class PathUtil
 {

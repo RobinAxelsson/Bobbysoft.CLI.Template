@@ -1,6 +1,6 @@
-﻿using SwDb.CLI.ActionDefintions;
+﻿using $projectName$.ActionDefintions;
 
-namespace SwDb.CLI.Services;
+namespace $projectName$.Services;
 
 public static class ActionDecorator
 {

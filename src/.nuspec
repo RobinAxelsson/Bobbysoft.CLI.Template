@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+
+    <id>Bobbysoft.Cli.Template</id>
+    <version>0.0.1</version>
+    <title>Bobbysoft.CLI.Template</title>
+    <authors>RobinAxelsson</authors>
+    <description>Cli tools</description>
+    <summary>
+      Helps with the GUI in the console
+    </summary>
+
+    <projectUrl>https://github.com/RobinAxelsson/Bobbysoft.cli.template</projectUrl>
+    <repository type="git" url="https://github.com/RobinAxelsson/Bobbysoft.cli.template.git" branch="master" />
+
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>cli helper gui</tags>
+    <icon>package-icon.png</icon>
+    <readme>README.md</readme>
+
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+
+  </metadata>
+
+  <files>
+    <file src="package-icon.png" />
+    <file src="README.md" />
+  </files>
+
+</package>

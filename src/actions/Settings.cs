@@ -1,9 +1,9 @@
 using Serilog.Core;
-using SwDb.CLI.ActionDefintions;
-using SwDb.CLI.Utils;
+using $projectName$.ActionDefintions;
+using $projectName$.Utils;
 using System.Diagnostics;
 
-namespace SwDb.CLI.CliModules;
+namespace $projectName$.CliModules;
 
 [Verb("settings", HelpText = "Opens the appsettings file in default editor")]
 public class SettingsOptions : IVerbOptions { }

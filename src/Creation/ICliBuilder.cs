@@ -1,4 +1,4 @@
-﻿namespace SwDb.CLI.Creation;
+﻿namespace $projectName$.Creation;
 
 internal interface ICliBuilder
 {

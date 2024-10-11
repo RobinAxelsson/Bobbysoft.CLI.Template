@@ -1,4 +1,4 @@
-﻿namespace SwDb.CLI.ActionDefintions;
+﻿namespace $projectName$.ActionDefintions;
 public interface IVerbOptions
 {
 }
