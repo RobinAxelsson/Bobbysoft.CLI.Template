@@ -13,6 +13,10 @@ jobs:
       fail-fast: false
 
     steps:
+    - name: Show Directory
+      run: ./build/ShowDir.ps1
+      shell: pwsh
+
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -22,22 +26,31 @@ jobs:
 
     - name: Setup NuGet CLI
       uses: nuget/setup-nuget@v2
-
-    - name: Show Directory
-      run: ./build/ShowDir.ps1
-      shell: pwsh
-    
+      with:
+        nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+        nuget-version: '5.x'
+      
     - name: Pack
-      run:  ./build/push.ps1
-      shell: pwsh
+      run: nuget pack ./src/.nuspec
 
     - name: Show Directory
       run: ./build/ShowDir.ps1
       shell: pwsh
 
-    - name: Push to NuGet
-      env:
-        NUGET_URL: https://api.nuget.org/v3/index.json
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: ./build/Push.ps1
-      shell: pwsh
+    - name: Publish to Nuget Gallery
+      run: nuget push *.nupkg
+    
+    # - name: Pack
+    #   run:  ./build/push.ps1
+    #   shell: pwsh
+
+    # - name: Show Directory
+    #   run: ./build/ShowDir.ps1
+    #   shell: pwsh
+
+    # - name: Push to NuGet
+    #   env:
+    #     NUGET_URL: https://api.nuget.org/v3/index.json
+    #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    #   run: ./build/Push.ps1
+    #   shell: pwsh
