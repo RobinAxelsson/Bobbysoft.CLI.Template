@@ -5,7 +5,7 @@ This project is a framework/template for building CommandLine tools
 ## Usage
 
 ```
-dotnet new install bscli
+dotnet new bscli
 ```
 
 ## Based on/inspired by/dependencies
