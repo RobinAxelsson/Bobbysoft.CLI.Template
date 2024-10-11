@@ -13,10 +13,6 @@ jobs:
       fail-fast: false
 
     steps:
-    - name: Show Directory
-      run: ./build/ShowDir.ps1
-      shell: pwsh
-
     - name: Checkout
       uses: actions/checkout@v3
 
