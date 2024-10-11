@@ -27,7 +27,7 @@
   </metadata>
 
   <files>
-    <file src="src\**\*" />
+    <file src=".\**\*" target=".\content" />
     <file src="..\package-icon.png" />
     <file src="..\README.md" />
   </files>
