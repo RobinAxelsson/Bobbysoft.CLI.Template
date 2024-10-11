@@ -34,7 +34,7 @@ jobs:
       shell: pwsh
 
     - name: Publish to Nuget Gallery
-      run: nuget push *.nupkg
+      run: nuget push *.nupkg -Source https://api.nuget.org/v3/index.json
     
     # - name: Pack
     #   run:  ./build/push.ps1
