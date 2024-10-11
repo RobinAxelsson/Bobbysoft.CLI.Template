@@ -23,7 +23,7 @@ jobs:
         nuget-version: '5.x'
       
     - name: Pack
-      run: nuget pack ./src/.nuspec
+      run: nuget pack .nuspec
 
     - name: Publish to Nuget Gallery
       run: nuget push *.nupkg -Source https://api.nuget.org/v3/index.json
